@@ -34,11 +34,11 @@
 
   <!-- Header -->
   <header class="text-center">
-  <img src="images/me.jpg" alt="Profile Picture" class="profile-photo">
-  <h1 class="mt-3">Yeganeh Mohammadi</h1>
-  <p class="lead">Computer Science Student ∣ Python/Django Developer ∣ Web Enthusiast</p>
-  <a href="#contact" class="btn btn-light btn-lg mt-3">Contact Me</a>
-</header>
+    <img src="images/me.jpg" alt="Profile Picture" class="profile-photo">
+    <h1 class="mt-3">Yeganeh Mohammadi</h1>
+    <p class="lead">Computer Science Student ∣ Python/Django Developer ∣ Web Enthusiast</p>
+    <a href="#contact" class="btn btn-light btn-lg mt-3">Contact Me</a>
+  </header>
 
   <!-- About Section -->
   <section id="about" class="container">
@@ -46,9 +46,10 @@
       <div class="col-md-6">
         <h2>About Me</h2>
         <p>
-          I am a dedicated Computer Science student at Amirkabir University of Technology, focusing on software development and problem-solving. My primary expertise lies in Python, with hands-on experience in the Django framework for building robust web applications. I am also proficient in C and Java, eager to apply theoretical knowledge to practical, impactful projects.
-
-
+          I am a dedicated Computer Science student at Amirkabir University of Technology, 
+          focusing on software development and problem-solving. 
+          My primary expertise lies in Python, with hands-on experience in the Django framework for building robust web applications. 
+          I am also proficient in C and Java, eager to apply theoretical knowledge to practical, impactful projects.
         </p>
       </div>
       <div class="col-md-6 text-center">
@@ -65,13 +66,13 @@
         <div class="col-md-4">
           <div class="card p-3 shadow">
             <h4>Frontend</h4>
-            <p>HTML, CSS, javaScript</p>
+            <p>HTML, CSS, JavaScript</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card p-3 shadow">
             <h4>Backend</h4>
-            <p> Python , Django , Java , C </p>
+            <p>Python, Django, Java, C</p>
           </div>
         </div>
         <div class="col-md-4">
@@ -88,7 +89,7 @@
   <section id="experience" class="container">
     <h2 class="text-center mb-5">Experience</h2>
     <div class="card mb-4 shadow p-3">
-      <h5>Web Developmen Project</h5>
+      <h5>Web Development Project</h5>
       <p class="text-muted">2024</p>
       <p>Developed a simple Content Management System (CMS),
          simulating a blogging platform using the Django framework. 
@@ -113,26 +114,26 @@
       </div>
     </div>
   </section>
-<!-- Contact Section -->
+
+  <!-- Contact Section -->
   <section id="contact" class="container">
     <h2 class="text-center mb-5">Contact Me</h2>
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form>
+        <form id="contact-form">
           <div class="mb-3">
             <label class="form-label">Your Name</label>
-            <input type="text" class="form-control" placeholder="Enter your name">
+            <input type="text" name="user_name" class="form-control" placeholder="Enter your name" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Email</label>
-            <input type="email" class="form-control" placeholder="Enter your email">
+            <input type="email" name="user_email" class="form-control" placeholder="Enter your email" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Message</label>
-            <textarea class="form-control" rows="4" placeholder="Write your message"></textarea>
+            <textarea name="massage" class="form-control" rows="4" placeholder="Write your message" required></textarea>
           </div>
-          <button type="submit" class="btn w-100">Send</button>
-
+          <button type="submit" class="btn btn-primary w-100">Send</button>
         </form>
       </div>
     </div>
@@ -140,11 +141,33 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Yeganeh Mohammadi | Built with Bootstrap
-</p>
+    <p>© 2025 Yeganeh Mohammadi | Built with Bootstrap</p>
   </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <!-- EmailJS Form Script -->
+  <script type="text/javascript">
+    emailjs.init("n4wzCfvwoc6tzZx_m");
+
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const form = document.getElementById("contact-form");
+      emailjs.sendForm('service_jap0k4i', 'template_x4ki2s8', form)
+
+        .then(function() {
+          alert('Message sent successfully!');
+          document.getElementById('contact-form').reset();
+        }, function(error) {
+          alert(' Error sending message: ' + JSON.stringify(error));
+        });
+    });
+  </script>
+
 </body>
 </html>
